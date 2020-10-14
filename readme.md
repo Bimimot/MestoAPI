@@ -20,8 +20,8 @@ https://api.prostomesto.tk
 |   GET      |   /users/{id}       	|  {} 						      |  данные пользователя с указанным id                   |
 |   PATCH    |   /me               	|  {me, about} 					      |  обновление данных в профиле пользователя             |
 |   PATCH    |   /me/avatar        	|  {avatar} 	  				      |  обновление в профиле пользователя ссылки на аватар   |
-|   PUT      |   /signin           	|  {email, password}				      |  авторизация пользователя			      |
-|   PUT      |   /signup	   	|  {name, about, avatar,email, password}	      |  создание нового пользователя			      |
+|   POST     |   /signin           	|  {email, password}				      |  авторизация пользователя			      |
+|   POST     |   /signup	   	|  {name, about, avatar,email, password}	      |  создание нового пользователя			      |
 |   GET	     |   /cards			|  {}						      |  список карточек с полными данными		      |
 |   POST     |   /cards		   	|  {name, link}					      |  создание карточки (название, ссылка на фото)	      |
 |   DEL      |   /cards/{cardID}   	|  {}						      |  удаление карточки с указанным cardID		      |
