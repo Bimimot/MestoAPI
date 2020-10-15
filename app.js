@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express'); // модуль ноды для http сервера
+const cors = require('cors'); // модуль для настройки CORS-правил
 const mongoose = require('mongoose'); // модуль ноды для подключения сервера с базой данных
 const bodyParser = require('body-parser'); // модуль ноды для парсинга пост-запросов в нужный (json) формат
 
@@ -22,6 +23,21 @@ const usersRouter = require('./routes/users.js'); // импортируем ро
 const { createUser, login } = require('./controllers/users'); // импорт методов авторизации из контроллера
 const { requestLogger, errorLogger } = require('./middlewares/logger'); // подключаем мидлваоу логгирования
 const validUrl = require('./routes/valid'); // подключаем функцию проверки url
+
+
+const whitelist = ['http://localhost:8080', 'https://bimimot.github.io/prostomesto/', 'http://prostomesto.tk','https://prostomesto.tk',]; // настройка cors
+
+const corsOptions = {
+  origin(origin, callback) {
+    if ((whitelist.indexOf(origin) !== -1) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json()); // подключаем сборку JSON-формата
 app.use(requestLogger); // подключаем логирование запросов
