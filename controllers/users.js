@@ -4,6 +4,21 @@ const User = require('../models/user'); // импорт схемы
 const { cryptoKey } = require('../key'); // импорт ключа для зашифровки токена
 const { NotFoundError, DoubleDataError } = require('../middlewares/errors');
 
+// данные зарегистрированного пользователя
+module.exports.getMe = (req, res, next) => {
+  const { name, about } = req.body;
+  User.findById(req.user._id)
+    .then((user) => {
+      if (user == null) {
+        throw new NotFoundError('Такой пользователь не найден'); // создаем ошибку и переходим в обработчик ошибок
+      } else {
+        res.send({ message: 'Данныe авторизованного пользователя', data: user });
+      }
+    })
+    .catch(next);
+};
+
+
 // поиск всех пользователей
 module.exports.getUsers = (req, res, next) => {
   User.find({})

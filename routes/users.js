@@ -5,12 +5,14 @@ const auth = require('../middlewares/auth'); // подключаем мидлв�
 const validUrl = require('./valid'); // подключаем функцию проверки url
 
 const {
-  getUsers, getUserById, patchUser, patchUserAvatar,
+  getMe, getUsers, getUserById, patchUser, patchUserAvatar,
 } = require('../controllers/users'); // импорт методов из контроллера
 
 router.use(auth); // вызываем авторизацию для всех методов идущих ниже
 
 router.get('/', getUsers); // вызываем метод получения всех пользователей
+
+router.get('/me', getMe); // вызываем метод получения своих данных
 
 router.get('/:id', celebrate({
   params: Joi.object().keys({ id: Joi.string().hex().length(24) }),
