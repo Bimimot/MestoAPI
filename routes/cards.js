@@ -8,9 +8,9 @@ const {
   getCards, postCard, delCard, likeCard, dislikeCard,
 } = require('../controllers/cards'); // импорт методов из контроллера
 
-router.use(auth); // вызываем авторизацию для всех методов ниже
-
 router.get('/', getCards); // вызываем метод получения всех карточек
+
+router.use(auth); // вызываем авторизацию для всех методов ниже
 
 router.post('/', celebrate({
   body: Joi.object().keys({
