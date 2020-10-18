@@ -25,7 +25,11 @@ const { requestLogger, errorLogger } = require('./middlewares/logger'); // по�
 const validUrl = require('./routes/valid'); // подключаем функцию проверки url
 
 
-const whitelist = ['http://localhost:8080', 'https://bimimot.github.io/ProstoMesto', 'http://prostomesto.tk','https://prostomesto.tk']; // настройка cors
+const whitelist = [
+      'http://localhost:8080',
+      'https://bimimot.github.io',
+      'https://bimimot.github.io/',
+      'https://bimimot.github.io/ProstoMesto/']; // настройка cors
 
 const corsOptions = {
   origin(origin, callback) {
