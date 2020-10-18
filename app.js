@@ -29,7 +29,12 @@ const whitelist = [
       'http://localhost:8080',
       'https://bimimot.github.io',
       'https://bimimot.github.io/',
-      'https://bimimot.github.io/ProstoMesto/']; // настройка cors
+      'https://bimimot.github.io/ProstoMesto/',
+      'http://prostomesto.tk/',
+      'https://prostomesto.tk/',
+      'http://www.prostomesto.tk/',
+      'https://www.prostomesto.tk/'
+    ]; // настройка cors
 
 const corsOptions = {
   origin(origin, callback) {
